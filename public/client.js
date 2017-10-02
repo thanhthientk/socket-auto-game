@@ -94,6 +94,32 @@
       }
     })
 
+    setInterval(function(){
+      let keyType = Math.floor(Math.random() * 4);
+      switch (keyType) {
+        case 0:
+          socket.emit('down', players);
+          accelPlayer(socket.id, 0, 1)
+          localDirection = 'down';
+          break;
+        case 1:
+          socket.emit('up', players);
+          accelPlayer(socket.id, 0, -1)
+          localDirection = 'up'
+          break;
+        case 2:
+          socket.emit('left', players);
+          accelPlayer(socket.id, -1, 0)
+          localDirection = 'left'
+          break;
+        case 3:
+          socket.emit('right', players);
+          accelPlayer(socket.id, 1, 0)
+          localDirection = 'right'
+          break;
+      }
+    }, 300)
+
     function gameLoop() {
       // update game
       updateGameState({players: players, doubloon: doubloon})
