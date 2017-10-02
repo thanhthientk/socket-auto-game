@@ -118,7 +118,7 @@
           localDirection = 'right'
           break;
       }
-    }, 300)
+    }, 100)
 
     function gameLoop() {
       // update game
